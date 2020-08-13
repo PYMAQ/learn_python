@@ -4,6 +4,7 @@ target = 9
 #第一种解法：暴力解法
 def twoSum_force(nums, target):
     for i in range(len(nums)):
+        #第二轮迭代的时候要记得是从第一轮迭代的下标开始累积，不然会超时
         for j in range(i+1,len(nums)):
             if(target-nums[i]==nums[j]):
                 return [i,j]
@@ -31,6 +32,7 @@ def twoSum_dict_plus(nums, target):
     for key,value in enumerate(nums):
         #判断减数1是否在字典中，如果在则直接返回结果数组，如果不在则添加进hashmap中
         if(hashMap.get(target-nums[key]) is not  None):
+            #获取对应键值对的值，key对应的value
             return [hashMap.get(target-nums[key]),key]
         #如果遍历期间字典中没有这个值则赋值进入。
         hashMap[value]=key
